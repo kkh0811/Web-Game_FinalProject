@@ -22,7 +22,7 @@ var objects;
     var Player = (function (_super) {
         __extends(Player, _super);
         function Player() {
-            _super.call(this, assets.getResult("master1"));
+            _super.call(this, textureAtlas, "master");
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
@@ -132,7 +132,7 @@ var objects;
             //this._shuffleImages("");
         };
         return Player;
-    })(createjs.Bitmap);
+    })(createjs.Sprite);
     objects.Player = Player;
 })(objects || (objects = {}));
 //# sourceMappingURL=player.js.map

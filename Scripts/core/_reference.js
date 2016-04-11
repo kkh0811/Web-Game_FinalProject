@@ -10,6 +10,7 @@
 /// <reference path="../objects/level2_enemy.ts" />
 /// <reference path="../objects/bonus.ts" />
 /// <reference path="../objects/gameobject.ts" />
+/// <reference path="../objects/spritegameobject.ts" />
 /// <reference path="../objects/player.ts" />
 /// <reference path="../managers/collision.ts" />
 /// <reference path="../controls/controls.ts" />

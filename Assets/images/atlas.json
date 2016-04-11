@@ -1,28 +1,39 @@
 {
-
 "images": [
     "atlas.png"
 ],
-
 "frames": [
-    [2, 2, 226, 176, 0, 0, -1],
-    [230, 2, 150, 50, 0, 0, 0],
-    [230, 54, 150, 50, 0, 0, 0],
-    [230, 106, 62, 60, 0, 0, -1],
-    [294, 106, 61, 49, 0, -4, -10]
+    [1, 1, 119, 120, 0, -1, 0],
+    [122, 1, 100, 98, 0, 0, -1],
+    [224, 1, 181, 86, 0, 0, 0],
+    [407, 1, 181, 86, 0, 0, 0],
+    [590, 1, 181, 86, 0, 0, 0],
+    [773, 1, 181, 86, 0, 0, 0],
+    [956, 1, 181, 86, 0, 0, 0],
+    [1139, 1, 66, 67, 0, -2, -1],
+    [1139, 70, 150, 50, 0, 0, 0],
+    [1207, 1, 67, 63, 0, -1, -4],
+    [1276, 1, 66, 63, 0, -2, -3],
+    [1291, 66, 70, 55, 0, 0, -8],
+    [1344, 1, 50, 45, 0, 0, 0]
 ],
-
 "animations": {
-    "cloud": [0],
-    "RestartButton": [1],
-    "StartButton": [2],
-    "island": [3],
-    "plane": [4]
-},
-
-"texturepacker": [
-        "SmartUpdateHash: $TexturePacker:SmartUpdate:c02f62a9dfd1b63438781afd20de7e16:469f37f325e84d0880cee224a864eddc:cbce6b53f0f49e0bf15173c25c41f876$",
-        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
-]
-
+    "enemytwo": [0],
+    "enemy": [1],
+    "ExitButton": [2],
+    "InstructionButton": [3],
+    "PlayButton": [4],
+    "RestartButton": [5],
+    "StartButton": [6],
+    "master3": [7],
+    "BackButton": [8],
+    "master4": [9],
+    "master1": [10],
+    "master2": [11],
+    "bonus": [12],
+    "master" : {
+        "frames": [10, 11, 7],
+        "speed": 0.5
+         }
+    }
 }

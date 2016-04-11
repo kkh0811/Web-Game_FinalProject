@@ -51,7 +51,7 @@ var objects;
             this._checkBounds((-config.Screen.WIDTH) * 2);
         };
         return Level2_Enemy;
-    })(objects.GameObject);
+    })(objects.SpriteGameObjects);
     objects.Level2_Enemy = Level2_Enemy;
 })(objects || (objects = {}));
 //# sourceMappingURL=level2_enemy.js.map

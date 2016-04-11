@@ -14,7 +14,7 @@ Revision History: 1.0
 
 module objects {
     // Bonus Class +++++++++++++++++++++++
-    export class Bonus extends objects.GameObject {
+    export class Bonus extends objects.SpriteGameObjects {
 
         // COSTRUCTOR METHODS +++++++++++++++++++++
         constructor() {

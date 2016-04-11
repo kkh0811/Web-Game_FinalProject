@@ -37,13 +37,13 @@ var scenes;
             this._backgroundImage.x = 0;
             this.addChild(this._backgroundImage);
             //Add Menu Label
-            this._endLabel = new objects.Label("Game Over", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y, true);
+            this._endLabel = new objects.Label("Game Over", "60px Consolas", "#000000", config.Screen.CENTER_X, config.Screen.CENTER_Y + 30, true);
             this.addChild(this._endLabel);
             //Add Score Label 
             this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FFFFFF", 290, 124, false);
             this.addChild(this._scoreLabel);
             //Add HighScore Label 
-            this._highscoreLabel = new objects.Label("High Score:", "40px Candara Bold Italic", "#FF4A4A", 190, 174, false);
+            this._highscoreLabel = new objects.Label("High Score:", "40px Candara Bold Italic", "#FF4A4A", 190, 204, false);
             this.addChild(this._highscoreLabel);
             // add the BACK button to the OVER scene
             this._restartButton = new objects.Button("RestartButton", config.Screen.CENTER_X - 10, config.Screen.CENTER_Y + 175, true);

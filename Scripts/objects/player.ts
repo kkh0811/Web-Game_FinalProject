@@ -14,7 +14,7 @@ Revision History: 1.0
 
 module objects {
     // PLAYER CLASS ++++++++++++
-    export class Player extends createjs.Bitmap {
+    export class Player extends createjs.Sprite {
         // PRIVATE INSTANCE VARIABLE
         private _topBounds: number;
         private _bottomBounds: number;
@@ -25,7 +25,7 @@ module objects {
         public width: number;
         public height: number;
         constructor() {
-            super(assets.getResult("master1"));
+            super(textureAtlas, "master");
 
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;

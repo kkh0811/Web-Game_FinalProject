@@ -19,6 +19,7 @@ module scenes {
         private _startButton: objects.Button;
         private _backgroundImage: createjs.Bitmap;
         
+        
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
             super();

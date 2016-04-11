@@ -14,7 +14,7 @@ Revision History: 1.0
 
 module objects {
     // Enemy Class +++++++++++++++++++++++
-    export class Enemy extends objects.GameObject {
+    export class Enemy extends objects.SpriteGameObjects {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++
 
         // COSTRUCTOR METHODS +++++++++++++++++++++

@@ -14,7 +14,7 @@ Revision History: 1.0
 
 module objects {
     // Level2_Enemy Class +++++++++++++++++++++++
-    export class Level2_Enemy extends objects.GameObject {
+    export class Level2_Enemy extends objects.SpriteGameObjects {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++
 
         // COSTRUCTOR METHODS +++++++++++++++++++++

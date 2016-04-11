@@ -18,6 +18,7 @@ var canvas;
 var stage;
 var game;
 var stats;
+var textureAtlas;
 var currentScene;
 var scene;
 // Score and lives values
@@ -33,25 +34,52 @@ var play;
 var level2_intro;
 var level2_play;
 var end;
+var atlas = {
+    "images": [
+        "../../Assets/images/atlas.png"
+    ],
+    "frames": [
+        [1, 1, 119, 120, 0, -1, 0],
+        [122, 1, 100, 98, 0, 0, -1],
+        [224, 1, 181, 86, 0, 0, 0],
+        [407, 1, 181, 86, 0, 0, 0],
+        [590, 1, 181, 86, 0, 0, 0],
+        [773, 1, 181, 86, 0, 0, 0],
+        [956, 1, 181, 86, 0, 0, 0],
+        [1139, 1, 66, 67, 0, -2, -1],
+        [1139, 70, 150, 50, 0, 0, 0],
+        [1207, 1, 67, 63, 0, -1, -4],
+        [1276, 1, 66, 63, 0, -2, -3],
+        [1291, 66, 70, 55, 0, 0, -8],
+        [1344, 1, 50, 45, 0, 0, 0]
+    ],
+    "animations": {
+        "enemytwo": [0],
+        "enemy": [1],
+        "ExitButton": [2],
+        "InstructionButton": [3],
+        "PlayButton": [4],
+        "RestartButton": [5],
+        "StartButton": [6],
+        "master3": [7],
+        "BackButton": [8],
+        "master4": [9],
+        "master1": [10],
+        "master2": [11],
+        "bonus": [12],
+        "master": {
+            "frames": [10, 11, 7],
+            "speed": 0.2
+        }
+    }
+};
 // Add my assets
 var assetData = [
     // add images
     { id: "MenuBackground", src: "../../Assets/images/MenuBackground.png" },
-    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
-    { id: "PlayButton", src: "../../Assets/images/PlayButton.png" },
-    { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" },
-    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" },
-    { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
-    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
     { id: "forest", src: "../../Assets/images/background2.png" },
     { id: "arctic", src: "../../Assets/images/background3.png" },
-    { id: "master1", src: "../../Assets/images/Bird1.png" },
-    { id: "master2", src: "../../Assets/images/Bird2.png" },
-    { id: "master3", src: "../../Assets/images/Bird3.png" },
-    { id: "mastercrushed", src: "../../Assets/images/crush.png" },
-    { id: "enemy", src: "../../Assets/images/enemy.png" },
-    { id: "enemytwo", src: "../../Assets/images/enemy2.png" },
-    { id: "bonus", src: "../../Assets/images/bonus.png" },
+    //{ id: "mastercrushed", src: "../../Assets/images/crush.png" },
     { id: "endback", src: "../../Assets/images/GameEnd.png" },
     { id: "intro", src: "../../Assets/images/intro.png" },
     // Add music
@@ -71,6 +99,8 @@ function preload() {
     assets.loadManifest(assetData);
 }
 function init() {
+    // instantiate textureAtlas
+    textureAtlas = new createjs.SpriteSheet(atlas);
     // create a reference the HTML canvas Element
     canvas = document.getElementById("canvas");
     // create our main display list container

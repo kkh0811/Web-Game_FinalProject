@@ -13,13 +13,13 @@ Revision History: 1.0
 */
 
 module objects {
-    export class Button extends createjs.Bitmap {
+    export class Button extends createjs.Sprite {
         //PRIVATE INSTANCE VARIABLES
         width: number;
         height: number;
         //CONSTRUCTOR
         constructor(pathString: string, x: number, y: number, centered: boolean) {
-            super(assets.getResult(pathString));
+            super(textureAtlas,pathString);
             this.x = x;
             this.y = y;
 

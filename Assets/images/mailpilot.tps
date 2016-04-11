@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.9.4</string>
+        <string>4.1.0</string>
         <key>fileName</key>
-        <string>/Users/thomas/Desktop/COMP397-MailPilotDemo-F2015/Assets/images/mailpilot.tps</string>
+        <string>C:/Users/Giho/Desktop/Web-Game_FinalProject/Assets/images/mailpilot.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>easeljs</string>
         <key>textureFileName</key>
-        <filename></filename>
+        <filename>atlas.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -72,7 +72,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>2</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -84,7 +84,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>2</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -175,26 +175,58 @@
             <double>1</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
-            <key>innerPadding</key>
-            <uint>0</uint>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
+            <uint>1</uint>
+            <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
             <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <key>tracerTolerance</key>
+            <int>200</int>
             <key>heuristicMask</key>
             <false/>
-            <key>pivotPoint</key>
-            <enum type="SpriteSettings::PivotPoint">Center</enum>
+            <key>defaultPivotPoint</key>
+            <point_f>0.5,0.5</point_f>
+            <key>writePivotPoints</key>
+            <false/>
         </struct>
+        <key>individualSpriteSettings</key>
+        <map type="IndividualSpriteSettingsMap">
+            <key type="filename">BackButton.png</key>
+            <key type="filename">ExitButton.png</key>
+            <key type="filename">InstructionButton.png</key>
+            <key type="filename">PlayButton.png</key>
+            <key type="filename">RestartButton.png</key>
+            <key type="filename">StartButton.png</key>
+            <key type="filename">bonus.png</key>
+            <key type="filename">enemy.png</key>
+            <key type="filename">enemytwo.png</key>
+            <key type="filename">master1.png</key>
+            <key type="filename">master2.png</key>
+            <key type="filename">master3.png</key>
+            <key type="filename">master4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+            </struct>
+        </map>
         <key>fileList</key>
         <array>
-            <filename>cloud.png</filename>
-            <filename>island.png</filename>
-            <filename>plane.png</filename>
+            <filename>PlayButton.png</filename>
+            <filename>InstructionButton.png</filename>
+            <filename>ExitButton.png</filename>
             <filename>StartButton.png</filename>
             <filename>RestartButton.png</filename>
+            <filename>BackButton.png</filename>
+            <filename>enemy.png</filename>
+            <filename>enemytwo.png</filename>
+            <filename>bonus.png</filename>
+            <filename>master1.png</filename>
+            <filename>master2.png</filename>
+            <filename>master3.png</filename>
+            <filename>master4.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

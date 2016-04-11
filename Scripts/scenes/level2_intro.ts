@@ -16,6 +16,10 @@ Revision History: 1.0
 module scenes {
     export class Level2_Intro extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
+        private _arctic: objects.Arctic;
+        private _level2Label: objects.Label;
+        private _newEnemy: createjs.Bitmap;
+        private _contentLabel: objects.Label;
         private _startButton: objects.Button;
         private _backgroundImage: createjs.Bitmap;
         
@@ -29,9 +33,29 @@ module scenes {
         // Start Method
         public start(): void {
             
-            //Add background
-            this._backgroundImage = new createjs.Bitmap(assets.getResult("intro"));
-            this.addChild(this._backgroundImage);
+            // added forest to the scene
+            this._arctic = new objects.Arctic();
+            this.addChild(this._arctic);
+            
+            //Add LEVEL2 Label
+            this._level2Label = new objects.Label(
+                "LEVEL 2", "60px Consolas",
+                "#FF4A4A",
+                config.Screen.CENTER_X, config.Screen.CENTER_Y-150, true);
+            this.addChild(this._level2Label);
+            
+            //Add CONTENTs Label
+            this._contentLabel = new objects.Label(
+                "        Fight and Kill\n\nAgainst powerful new enemies! ", "30px Consolas",
+                "#FFFFFF",
+                config.Screen.CENTER_X, config.Screen.CENTER_Y-60, true);
+            this.addChild(this._contentLabel);
+            
+            // Added new enemy image
+            this._newEnemy = new createjs.Bitmap(assets.getResult("enemytwo"));
+            this._newEnemy.x = 260;
+            this._newEnemy.y = 230;
+            this.addChild(this._newEnemy);
                
             // add the Start button to the MENU scene
             this._startButton = new objects.Button(
@@ -50,7 +74,7 @@ module scenes {
 
         // INTRO Scene updates here
         public update(): void {
-
+            this._arctic.update();
         }
         
         
