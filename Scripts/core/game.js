@@ -1,15 +1,15 @@
 /*
-#######################################################################################
+##############################################################################################
 The name of source file : game.ts
-The information of author :  Giho Kim #300738697
+The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 29 March 2016
+Last Modified date: 11 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.0
-#######################################################################################
+Revision History: 1.6
+##############################################################################################
 */
 /// <reference path = "_reference.ts" />
 // global variables
@@ -26,7 +26,7 @@ var livesValue;
 var scoreValue;
 var highScoreValue = 0;
 // key values
-var KEYCODE_LEFT = 37, KEYCODE_RIGHT = 39, KEYCODE_UP = 38, KEYCODE_DOWN = 40;
+var KEYCODE_LEFT = 37, KEYCODE_RIGHT = 39, KEYCODE_UP = 38, KEYCODE_DOWN = 40, KEYCODE_SPACEBAR = 32;
 // Game Scenes
 var menu;
 var intro;
@@ -34,6 +34,7 @@ var play;
 var level2_intro;
 var level2_play;
 var end;
+// Atlas image variables
 var atlas = {
     "images": [
         "../../Assets/images/atlas.png"
@@ -82,6 +83,7 @@ var assetData = [
     //{ id: "mastercrushed", src: "../../Assets/images/crush.png" },
     { id: "endback", src: "../../Assets/images/GameEnd.png" },
     { id: "intro", src: "../../Assets/images/intro.png" },
+    { id: "beak", src: "../../Assets/images/beak.png" },
     // Add music
     { id: "backMusic", src: "../../Assets/audio/backmusic.mp3" },
     { id: "bgmchicken", src: "../../Assets/audio/chicken.mp3" },

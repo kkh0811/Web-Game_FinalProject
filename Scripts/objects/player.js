@@ -1,15 +1,15 @@
 /*
-#######################################################################################
+###############################################################################################
 The name of source file : player.ts
-The information of author :  Giho Kim #300738697
+The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 29 March 2016
+Last Modified date: 11 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.0
-#######################################################################################
+Revision History: 1.6
+##############################################################################################
 */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -23,6 +23,9 @@ var objects;
         __extends(Player, _super);
         function Player() {
             _super.call(this, textureAtlas, "master");
+            this._weaponNum = 0;
+            this._weaponLimit = 3000;
+            this._flagSpacebarRepeat = false;
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
@@ -35,14 +38,14 @@ var objects;
             // keyborad event
             window.onkeydown = this._onControlDown;
             window.onkeyup = this._onControlUp;
-            // mouse drag event handler
-            this.on("pressmove", function (evt) {
-                // currentTarget will be the container that the event listener was added to:
-                evt.currentTarget.x = evt.stageX;
-                evt.currentTarget.y = evt.stageY;
-                // make sure to redraw the stage to show the change:
-                this.update();
-            });
+            /*
+                        
+                        // added enemies to the scene
+                        for (var weapon: number = 0; weapon < this._weaponNum; weapon++) {
+                            this._weapons[weapon] = new objects.Weapon();
+                            this.addChild(this._weapons[weapon]);
+                        }
+                        */
         }
         //PRIVATE METHODS
         Player.prototype._checkBounds = function () {
@@ -59,25 +62,6 @@ var objects;
                 this.x = this._rightBounds;
             }
         };
-        /*
-        private _shuffleImages(value:string)
-        {
-            var images = new Array();
-            images[0] = assets.getResult("master1");
-            images[1] = assets.getResult("master2");
-            images[2] = assets.getResult("master2");
-           do
-            {
-                var i:number;
-                for(i = 0; i <2; i++)
-                {
-                    this.image = images[i];
-                }
-            }
-            while(value != "");
-
-        }
-        */
         // press keyborad
         Player.prototype._onControlDown = function (e) {
             switch (e.which) {
@@ -92,6 +76,9 @@ var objects;
                     break;
                 case KEYCODE_DOWN:
                     controls.down = true;
+                    break;
+                case KEYCODE_SPACEBAR:
+                    controls.spacebar = true;
                     break;
             }
         };
@@ -110,11 +97,13 @@ var objects;
                 case KEYCODE_DOWN:
                     controls.down = false;
                     break;
+                case KEYCODE_SPACEBAR:
+                    controls.spacebar = false;
+                    break;
             }
         };
         // PUBLIC MEHTODS
         Player.prototype.update = function (control) {
-            //this.y = stage.mouseY;
             if (control.down == true) {
                 this.y += 5;
             }
@@ -127,9 +116,9 @@ var objects;
             else if (control.right == true) {
                 this.x += 5;
             }
+            else if (control.spacebar == true) {
+            }
             this._checkBounds();
-            //console.log("Shuffle!")
-            //this._shuffleImages("");
         };
         return Player;
     })(createjs.Sprite);

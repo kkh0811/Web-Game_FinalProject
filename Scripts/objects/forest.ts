@@ -1,15 +1,15 @@
 /*
-#######################################################################################
+###############################################################################################
 The name of source file : forest.ts
-The information of author :  Giho Kim #300738697
+The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 29 March 2016
+Last Modified date: 11 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.0
-#######################################################################################
+Revision History: 1.6
+###############################################################################################
 */
 
 module objects {
@@ -25,8 +25,8 @@ module objects {
             this.name = "forest";
         }
         
-        // PRIVATE METHODS +++++++++++++++++++++++
-        protected _checkBounds(value:number):void {
+        //  METHODS +++++++++++++++++++++++
+        public _checkBounds(value:number):void {
             //console.log(this.x);
             if(this.x <= value)
             {

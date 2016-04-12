@@ -1,15 +1,15 @@
 ﻿/*
-#######################################################################################
+##############################################################################################
 The name of source file : game.ts
-The information of author :  Giho Kim #300738697
+The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 29 March 2016
+Last Modified date: 11 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.0
-#######################################################################################
+Revision History: 1.6
+##############################################################################################
 */
 
 /// <reference path = "_reference.ts" />
@@ -33,7 +33,8 @@ var highScoreValue: number = 0;
 var KEYCODE_LEFT: number = 37,
     KEYCODE_RIGHT: number = 39,
     KEYCODE_UP: number = 38,
-    KEYCODE_DOWN: number = 40;
+    KEYCODE_DOWN: number = 40,
+    KEYCODE_SPACEBAR: number = 32;
 
 // Game Scenes
 var menu: scenes.Menu;
@@ -43,6 +44,7 @@ var level2_intro: scenes.Level2_Intro;
 var level2_play: scenes.Level2_Play;
 var end: scenes.End;
 
+// Atlas image variables
 var atlas = {
 "images": [
     "../../Assets/images/atlas.png"
@@ -76,7 +78,7 @@ var atlas = {
     "master1": [10],
     "master2": [11],
     "bonus": [12],
-    "master" : {
+    "master" : {  // for shuffle images animation 
         "frames": [10, 11, 7],
         "speed": 0.2
          }
@@ -92,6 +94,7 @@ var assetData: objects.Asset[] = [
     //{ id: "mastercrushed", src: "../../Assets/images/crush.png" },
     { id: "endback", src: "../../Assets/images/GameEnd.png" },
     { id: "intro", src: "../../Assets/images/intro.png" },
+    { id: "beak", src: "../../Assets/images/beak.png" },
     
     // Add music
     { id: "backMusic", src: "../../Assets/audio/backmusic.mp3" },

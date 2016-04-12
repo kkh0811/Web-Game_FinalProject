@@ -1,15 +1,15 @@
 /*
-#######################################################################################
+###############################################################################################
 The name of source file : player.ts
-The information of author :  Giho Kim #300738697
+The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 29 March 2016
+Last Modified date: 11 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.0
-#######################################################################################
+Revision History: 1.6
+##############################################################################################
 */
 
 module objects {
@@ -20,10 +20,18 @@ module objects {
         private _bottomBounds: number;
         private _leftBounds: number;
         private _rightBounds: number;
+        private _weaponNum: number = 0;
+        private _weaponLimit: number = 3000;
+        private _flagSpacebarRepeat: boolean = false;
+        private _weapons: objects.Weapon[]; 
+        
+
+
 
         // PUBLIC INSTANCE VARIABLES
         public width: number;
         public height: number;
+
         constructor() {
             super(textureAtlas, "master");
 
@@ -39,22 +47,23 @@ module objects {
             this._rightBounds = 400;
 
             this.x = this.regX;
+            
 
             // keyborad event
             window.onkeydown = this._onControlDown;
             window.onkeyup = this._onControlUp;
 
-            // mouse drag event handler
-            this.on("pressmove", function(evt) {
-                // currentTarget will be the container that the event listener was added to:
-                evt.currentTarget.x = evt.stageX;
-                evt.currentTarget.y = evt.stageY;
-                // make sure to redraw the stage to show the change:
-                this.update();
-            });
+            /*
+                        
+                        // added enemies to the scene
+                        for (var weapon: number = 0; weapon < this._weaponNum; weapon++) {
+                            this._weapons[weapon] = new objects.Weapon();
+                            this.addChild(this._weapons[weapon]);
+                        }
+                        */
 
         }
-
+        
         //PRIVATE METHODS
         private _checkBounds(): void {
             if (this.y < this._topBounds) {
@@ -70,27 +79,8 @@ module objects {
                 this.x = this._rightBounds;
             }
         }
-
-        /*
-        private _shuffleImages(value:string)
-        {
-            var images = new Array();
-            images[0] = assets.getResult("master1");
-            images[1] = assets.getResult("master2");
-            images[2] = assets.getResult("master2");
-           do
-            {
-                var i:number;
-                for(i = 0; i <2; i++)
-                {
-                    this.image = images[i];
-                }
-            }
-            while(value != "");
-
-        }
-        */
-
+        
+        
         // press keyborad
         private _onControlDown(e): void {
             switch (e.which) {
@@ -105,6 +95,9 @@ module objects {
                     break;
                 case KEYCODE_DOWN:
                     controls.down = true;
+                    break;
+                case KEYCODE_SPACEBAR:
+                    controls.spacebar = true;
                     break;
             }
         }
@@ -124,14 +117,18 @@ module objects {
                 case KEYCODE_DOWN:
                     controls.down = false;
                     break;
+                case KEYCODE_SPACEBAR:
+                    controls.spacebar = false;
+                    break;
+
             }
         }
-
+        
+        
+        
 
         // PUBLIC MEHTODS
         public update(control): void {
-            //this.y = stage.mouseY;
-
             if (control.down == true) {
                 this.y += 5;
             } else if (control.up == true) {
@@ -140,12 +137,10 @@ module objects {
                 this.x -= 5;
             } else if (control.right == true) {
                 this.x += 5;
+            } else if (control.spacebar == true) {
+                
             }
-
             this._checkBounds();
-            //console.log("Shuffle!")
-            //this._shuffleImages("");
-
         }
     }
 }

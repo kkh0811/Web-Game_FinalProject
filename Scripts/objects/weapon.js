@@ -1,6 +1,6 @@
 /*
 ###############################################################################################
-The name of source file : arctic.ts
+The name of source file : weapon.ts
 The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
 Last Modified date: 11 April 2016
@@ -18,35 +18,39 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // Arctic Class +++++++++++++++++++++++
-    var Arctic = (function (_super) {
-        __extends(Arctic, _super);
-        // PRIVATE INSTANCE VARIABLES ++++++++++++++++
+    // Weapon Class +++++++++++++++++++++++
+    var Weapon = (function (_super) {
+        __extends(Weapon, _super);
         // COSTRUCTOR METHODS +++++++++++++++++++++
-        function Arctic() {
-            _super.call(this, "arctic");
-            this._speed.x = 1.5; //Arctic SPEED
-            this._reset(0);
-            this.name = "arctic";
+        function Weapon() {
+            _super.call(this, "beak");
+            this._weaponSpeed = 5;
+            this._beAttacked = false;
+            this.name = "beak";
         }
         //  METHODS +++++++++++++++++++++++
-        Arctic.prototype._checkBounds = function (value) {
-            //console.log(this.x);
-            if (this.x <= value) {
-                this._reset(0);
+        Weapon.prototype._checkBounds = function () {
+            // has outside the viewport
+            if (this.x > 700 + this.width) {
+                config.Game.bulletFlag = false;
+                this._beAttacked = true;
             }
         };
-        // reset the forest offscreen
-        Arctic.prototype._reset = function (value) {
-            this.x = value;
+        // reset the enemy offscreen
+        Weapon.prototype._reset = function () {
+            //  this._dx = this._weaponSpeed;
         };
-        Arctic.prototype.update = function () {
-            // scroll the forest 5 px per frame
-            this.x -= this._speed.x;
-            this._checkBounds(-1655);
+        Weapon.prototype._setup = function (playerX, playerY) {
+            this.x = playerX;
+            this.y = playerY;
+            this._dx = this._weaponSpeed;
         };
-        return Arctic;
+        Weapon.prototype.update = function () {
+            this.x += 3;
+            this._checkBounds();
+        };
+        return Weapon;
     })(objects.GameObject);
-    objects.Arctic = Arctic;
+    objects.Weapon = Weapon;
 })(objects || (objects = {}));
-//# sourceMappingURL=arctic.js.map
+//# sourceMappingURL=weapon.js.map

@@ -1,6 +1,6 @@
 /*
 ###############################################################################################
-The name of source file : enemy.ts
+The name of source file : weapon.ts
 The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
 Last Modified date: 11 April 2016
@@ -13,43 +13,49 @@ Revision History: 1.6
 */
 
 module objects {
-    // Enemy Class +++++++++++++++++++++++
-    export class Enemy extends objects.SpriteGameObjects {
+    // Weapon Class +++++++++++++++++++++++
+    export class Weapon extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++
-
+        private _dx: number;
+        private _weaponSpeed: number = 5;
+        private _beAttacked: boolean = false;
+        
         // COSTRUCTOR METHODS +++++++++++++++++++++
         constructor() {
-            super("enemy");
-            this._speed.x = 2.5; //Forest SPEED
-            this._reset(this._rightBounds);
-            this.name = "enemy";
-            this.soundString = "bgmcrush";
+            super("beak");
+            this.name = "beak";
+            
+                  
         }
         
         //  METHODS +++++++++++++++++++++++
-        public _checkBounds(value:number):void {
+        public _checkBounds():void {
             // has outside the viewport
-            if(this.x <= value)
+            if(this.x > 700 + this.width)
             {
-                this._reset(this._rightBounds);
+                config.Game.bulletFlag = false;
+                this._beAttacked = true;
+                
+            //    game.removeChild(this);
             }
         }
         
         // reset the enemy offscreen
-        public _reset(value:number):void {
-            this._speed.x = Math.round((Math.random()*5) +3);
-            this._speed.y = Math.round((Math.random()*5) -1);
-            this.x = value;
-            this.y = Math.floor((Math.random() * this._bottomBounds) + this._topBounds); 
+        public _reset():void {           
+            
+          //  this._dx = this._weaponSpeed;
+            
         }
         
+        public _setup(playerX,playerY):void {           
+            this.x = playerX;
+            this.y = playerY;
+            this._dx = this._weaponSpeed;           
+        }
         
-      
-        public update():void {
-            // scroll the enemy 5 px per frame
-            this.x -= this._speed.x;
-            this.y -= this._speed.y;
-            this._checkBounds((-config.Screen.WIDTH)*2);
+        public update():void {            
+            this.x += 3;
+            this._checkBounds();
         }
     }
 }

@@ -1,18 +1,18 @@
 /*
-#######################################################################################
-The name of source file : intro.ts
-The information of author :  Giho Kim #300738697
+###############################################################################################
+The name of source file : level2_intro.ts
+The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 29 March 2016
+Last Modified date: 11 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.0
-#######################################################################################
+Revision History: 1.6
+###############################################################################################
 */
 
-// INTRO SCENE
+// Level2_Intro Scene
 module scenes {
     export class Level2_Intro extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
@@ -33,7 +33,7 @@ module scenes {
         // Start Method
         public start(): void {
             
-            // added forest to the scene
+            // added background to the scene
             this._arctic = new objects.Arctic();
             this.addChild(this._arctic);
             
@@ -57,7 +57,7 @@ module scenes {
             this._newEnemy.y = 230;
             this.addChild(this._newEnemy);
                
-            // add the Start button to the MENU scene
+            // add the Start button to the Level2_Play scene
             this._startButton = new objects.Button(
                 "StartButton",
                 config.Screen.CENTER_X - 10,
@@ -72,7 +72,7 @@ module scenes {
             stage.addChild(this);
         }
 
-        // INTRO Scene updates here
+        // Level2_Intro Background updates here
         public update(): void {
             this._arctic.update();
         }
@@ -84,7 +84,7 @@ module scenes {
         private _startButtonClick(event: createjs.MouseEvent) {
             // Add click sound
             createjs.Sound.play("bgmchicken");
-            // Switch to the Play Scene
+            // Switch to the Level2_Play Scene
             scene = config.Scene.LEVEL2_PLAY;
             changeScene();
         }
