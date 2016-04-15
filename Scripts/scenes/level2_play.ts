@@ -154,7 +154,12 @@ module scenes {
 
             this._collision.check(this._bonus);
             this._updateScore();
-
+            if (scoreValue >= 1000) {
+                //Change to Level3 
+                createjs.Sound.stop();
+                scene = config.Scene.LEVEL3_INTRO;
+                changeScene();
+            }
 
         }
     }

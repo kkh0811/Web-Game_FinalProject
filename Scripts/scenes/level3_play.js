@@ -19,10 +19,10 @@ var __extends = (this && this.__extends) || function (d, b) {
 // Level2_Play SCENE
 var scenes;
 (function (scenes) {
-    var Level2_Play = (function (_super) {
-        __extends(Level2_Play, _super);
+    var Level3_Play = (function (_super) {
+        __extends(Level3_Play, _super);
         // CONSTRUCTOR ++++++++++++++++++++++
-        function Level2_Play() {
+        function Level3_Play() {
             _super.call(this);
             this._flagSpacebarRepeat = false;
         }
@@ -31,13 +31,13 @@ var scenes;
         * @method _updateScore
         * @return void
         */
-        Level2_Play.prototype._updateScore = function () {
+        Level3_Play.prototype._updateScore = function () {
             this._livesLabel.text = "Lives: " + livesValue;
             this._scoreLabel.text = "Score: " + Math.round(scoreValue);
         };
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
-        Level2_Play.prototype.start = function () {
+        Level3_Play.prototype.start = function () {
             // Set score and lives value
             livesValue = 5;
             scoreValue = 0;
@@ -47,13 +47,17 @@ var scenes;
             //Set Enemy Count
             this._enemyCount = 7;
             this._level2_enemyCount = 2;
+            this._bossCount = 1;
             //Instantiate Enemy array 
             this._enemies = new Array();
             //Instantiate Level2_Enemy array 
             this._level2_enemies = new Array();
-            // added arctic to the scene
-            this._arctic = new objects.Arctic();
-            this.addChild(this._arctic);
+            // added Boss to the secne
+            this._boss = new objects.Boss();
+            this.addChild(this._boss);
+            // added sky to the scene
+            this._sky = new objects.Sky();
+            this.addChild(this._sky);
             // added player to the secne
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -85,7 +89,7 @@ var scenes;
             stage.addChild(this);
         };
         // PLAY Scene updates here
-        Level2_Play.prototype.update = function () {
+        Level3_Play.prototype.update = function () {
             var _this = this;
             if (controls.spacebar == true && !this._flagSpacebarRepeat) {
                 if (!this._flagSpacebarRepeat) {
@@ -100,9 +104,10 @@ var scenes;
             if (this._flagSpacebarRepeat) {
                 this._weapon.update();
             }
-            this._arctic.update();
+            this._sky.update();
             this._bonus.update();
             this._player.update(controls);
+            this._boss.update();
             this._enemies.forEach(function (enemy) {
                 enemy.update();
                 _this._collision.check(enemy);
@@ -114,15 +119,9 @@ var scenes;
             });
             this._collision.check(this._bonus);
             this._updateScore();
-            if (scoreValue >= 1000) {
-                //Change to Level3 
-                createjs.Sound.stop();
-                scene = config.Scene.LEVEL3_INTRO;
-                changeScene();
-            }
         };
-        return Level2_Play;
+        return Level3_Play;
     })(objects.Scene);
-    scenes.Level2_Play = Level2_Play;
+    scenes.Level3_Play = Level3_Play;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=level2_play.js.map
+//# sourceMappingURL=level3_play.js.map

@@ -23,6 +23,8 @@ var config;
         Scene.INTRO = 3;
         Scene.LEVEL2_INTRO = 4;
         Scene.LEVEL2_PLAY = 5;
+        Scene.LEVEL3_INTRO = 6;
+        Scene.LEVEL3_PLAY = 7;
         return Scene;
     })();
     config.Scene = Scene;

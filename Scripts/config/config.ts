@@ -21,6 +21,8 @@ module config {
         public static INTRO: number = 3;
         public static LEVEL2_INTRO:number = 4;
         public static LEVEL2_PLAY:number = 5;
+        public static LEVEL3_INTRO:number = 6;
+        public static LEVEL3_PLAY:number = 7;
     }
     
     

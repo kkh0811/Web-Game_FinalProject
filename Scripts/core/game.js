@@ -33,6 +33,8 @@ var intro;
 var play;
 var level2_intro;
 var level2_play;
+var level3_intro;
+var level3_play;
 var end;
 // Atlas image variables
 var atlas = {
@@ -80,7 +82,9 @@ var assetData = [
     { id: "MenuBackground", src: "../../Assets/images/MenuBackground.png" },
     { id: "forest", src: "../../Assets/images/background2.png" },
     { id: "arctic", src: "../../Assets/images/background3.png" },
+    { id: "sky", src: "../../Assets/images/background4.png" },
     //{ id: "mastercrushed", src: "../../Assets/images/crush.png" },
+    { id: "boss", src: "../../Assets/images/Boss.png" },
     { id: "endback", src: "../../Assets/images/GameEnd.png" },
     { id: "intro", src: "../../Assets/images/intro.png" },
     { id: "beak", src: "../../Assets/images/beak.png" },
@@ -177,6 +181,20 @@ function changeScene() {
             level2_play = new scenes.Level2_Play();
             currentScene = level2_play;
             console.log("Starting LEVEL2_PLAY Scene");
+            break;
+        case config.Scene.LEVEL3_INTRO:
+            // show the LEVEL3_INTRO scene
+            stage.removeAllChildren();
+            level3_intro = new scenes.Level3_Intro();
+            currentScene = level3_intro;
+            console.log("Starting LEVEL3_INTRO Scene");
+            break;
+        case config.Scene.LEVEL3_PLAY:
+            // show the LEVEL3_PLAY scene
+            stage.removeAllChildren();
+            level3_play = new scenes.Level3_Play();
+            currentScene = level3_play;
+            console.log("Starting LEVEL3_PLAY Scene");
             break;
         case config.Scene.END:
             // show the END scene
