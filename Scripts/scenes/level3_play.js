@@ -52,9 +52,6 @@ var scenes;
             this._enemies = new Array();
             //Instantiate Level2_Enemy array 
             this._level2_enemies = new Array();
-            // added Boss to the secne
-            this._boss = new objects.Boss();
-            this.addChild(this._boss);
             // added sky to the scene
             this._sky = new objects.Sky();
             this.addChild(this._sky);
@@ -73,6 +70,9 @@ var scenes;
                 this._level2_enemies[level2_enemy] = new objects.Level2_Enemy();
                 this.addChild(this._level2_enemies[level2_enemy]);
             }
+            // added Boss to the secne
+            this._boss = new objects.Boss();
+            this.addChild(this._boss);
             // added collision manager to the scene
             this._collision = new managers.Collision(this._player);
             if (controls.spacebar == true) {
