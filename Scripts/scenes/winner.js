@@ -19,32 +19,19 @@ Revision History: 1.6
 // LEFT_CAVE SCENE
 var scenes;
 (function (scenes) {
-    var End = (function (_super) {
-        __extends(End, _super);
+    var Winner = (function (_super) {
+        __extends(Winner, _super);
         // CONSTRUCTOR ++++++++++++++++++++++
-        function End() {
+        function Winner() {
             _super.call(this);
         }
         // PUBLIC METHODS ++++++++++++++++++++
         // Start Method
-        End.prototype.start = function () {
-            //Set High Score Value
-            if (scoreValue > highScoreValue) {
-                highScoreValue = scoreValue;
-            }
+        Winner.prototype.start = function () {
             //Add background
-            this._backgroundImage = new createjs.Bitmap(assets.getResult("endback"));
+            this._backgroundImage = new createjs.Bitmap(assets.getResult("WinnerBackground"));
             this._backgroundImage.x = 0;
             this.addChild(this._backgroundImage);
-            //Add GameOver Label
-            this._endLabel = new objects.Label("Game Over", "60px Consolas", "#000000", config.Screen.CENTER_X, config.Screen.CENTER_Y + 30, true);
-            this.addChild(this._endLabel);
-            //Add Score Label 
-            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FFFFFF", 290, 124, false);
-            this.addChild(this._scoreLabel);
-            //Add HighScore Label 
-            this._highscoreLabel = new objects.Label("High Score:", "40px Candara Bold Italic", "#FF4A4A", 190, 204, false);
-            this.addChild(this._highscoreLabel);
             // add the RestartButton to the OVER scene
             this._restartButton = new objects.Button("RestartButton", config.Screen.CENTER_X - 175, config.Screen.CENTER_Y + 175, true);
             this.addChild(this._restartButton);
@@ -58,14 +45,9 @@ var scenes;
             // add this scene to the global stage container
             stage.addChild(this);
         };
-        // PLAY Scene updates here
-        End.prototype.update = function () {
-            this._scoreLabel.text = "" + Math.round(scoreValue);
-            this._highscoreLabel.text = "High Score : " + Math.round(highScoreValue);
-        };
         //EVENT HANDLERS ++++++++++++++++++++
         // ExitButton click event handler
-        End.prototype._exitButtonClick = function (event) {
+        Winner.prototype._exitButtonClick = function (event) {
             // Add click sound
             createjs.Sound.play("bgmchicken");
             // Close the game
@@ -73,15 +55,15 @@ var scenes;
             window.close();
         };
         // ReStart Button click event handler
-        End.prototype._restartButtonClick = function (event) {
+        Winner.prototype._restartButtonClick = function (event) {
             // Add restart sound
             createjs.Sound.play("bgmrestart");
             // Switch to the Play Scene
             scene = config.Scene.PLAY;
             changeScene();
         };
-        return End;
+        return Winner;
     })(objects.Scene);
-    scenes.End = End;
+    scenes.Winner = Winner;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=end.js.map
+//# sourceMappingURL=winner.js.map

@@ -16,7 +16,7 @@ module objects {
     // SpriteGameObjects Super Class +++++++++++++++++++++++
     export class SpriteGameObjects extends createjs.Sprite {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++
-        public _speed: createjs.Point;
+        protected _speed: createjs.Point;
         protected _leftBounds: number;
         protected _rightBounds: number;
         protected _topBounds: number;

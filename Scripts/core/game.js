@@ -3,12 +3,12 @@
 The name of source file : game.ts
 The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 11 April 2016
+Last Modified date: 18 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.6
+Revision History: 2.0
 ##############################################################################################
 */
 /// <reference path = "_reference.ts" />
@@ -30,12 +30,14 @@ var KEYCODE_LEFT = 37, KEYCODE_RIGHT = 39, KEYCODE_UP = 38, KEYCODE_DOWN = 40, K
 // Game Scenes
 var menu;
 var intro;
+var level1_intro;
 var play;
 var level2_intro;
 var level2_play;
 var level3_intro;
 var level3_play;
 var end;
+var winner;
 // Atlas image variables
 var atlas = {
     "images": [
@@ -84,10 +86,16 @@ var assetData = [
     { id: "arctic", src: "../../Assets/images/background3.png" },
     { id: "sky", src: "../../Assets/images/background4.png" },
     //{ id: "mastercrushed", src: "../../Assets/images/crush.png" },
-    { id: "boss", src: "../../Assets/images/Boss.png" },
+    { id: "boss", src: "../../Assets/images/boss.png" },
+    { id: "bonus", src: "../../Assets/images/bonus.png" },
+    { id: "ruby", src: "../../Assets/images/ruby.png" },
     { id: "endback", src: "../../Assets/images/GameEnd.png" },
     { id: "intro", src: "../../Assets/images/intro.png" },
     { id: "beak", src: "../../Assets/images/beak.png" },
+    { id: "bomb", src: "../../Assets/images/bomb.png" },
+    { id: "enemy", src: "../../Assets/images/enemy.png" },
+    { id: "enemytwo", src: "../../Assets/images/enemytwo.png" },
+    { id: "WinnerBackground", src: "../../Assets/images/Winner.png" },
     // Add music
     { id: "backMusic", src: "../../Assets/audio/backmusic.mp3" },
     { id: "bgmchicken", src: "../../Assets/audio/chicken.mp3" },
@@ -161,6 +169,13 @@ function changeScene() {
             currentScene = intro;
             console.log("Starting INTRO Scene");
             break;
+        case config.Scene.LEVEL1_INTRO:
+            // show the LEVEL1_INTRO scene
+            stage.removeAllChildren();
+            level1_intro = new scenes.Level1_Intro();
+            currentScene = level1_intro;
+            console.log("Starting LEVEL1_INTRO Scene");
+            break;
         case config.Scene.PLAY:
             // show the PLAY scene
             stage.removeAllChildren();
@@ -202,6 +217,13 @@ function changeScene() {
             end = new scenes.End();
             currentScene = end;
             console.log("Starting END Scene");
+            break;
+        case config.Scene.WINNER:
+            // show the END scene
+            stage.removeAllChildren();
+            winner = new scenes.Winner();
+            currentScene = winner;
+            console.log("Starting WINNER Scene");
             break;
     }
     console.log(currentScene.numChildren);

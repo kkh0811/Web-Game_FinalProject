@@ -52,9 +52,9 @@ module scenes {
             
             //Add CONTENTs Label
             this._contentLabel = new objects.Label(
-                "Kill Boss! ", "30px Consolas",
+                "Get 1500 Scores to Win! ", "30px Consolas",
                 "#FFFFFF",
-                config.Screen.CENTER_X, config.Screen.CENTER_Y - 100, true);
+                config.Screen.CENTER_X, config.Screen.CENTER_Y - 90, true);
             this.addChild(this._contentLabel);
                
             // add the Start button to the Level2_Play scene

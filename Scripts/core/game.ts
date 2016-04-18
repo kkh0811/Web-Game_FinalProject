@@ -3,12 +3,12 @@
 The name of source file : game.ts
 The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 11 April 2016
+Last Modified date: 18 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
 Good Luck!
-Revision History: 1.6
+Revision History: 2.0
 ##############################################################################################
 */
 
@@ -39,12 +39,14 @@ var KEYCODE_LEFT: number = 37,
 // Game Scenes
 var menu: scenes.Menu;
 var intro: scenes.Intro;
+var level1_intro: scenes.Level1_Intro;
 var play: scenes.Play;
 var level2_intro: scenes.Level2_Intro;
 var level2_play: scenes.Level2_Play;
 var level3_intro: scenes.Level3_Intro;
 var level3_play: scenes.Level3_Play;
 var end: scenes.End;
+var winner: scenes.Winner;
 
 // Atlas image variables
 var atlas = {
@@ -95,10 +97,16 @@ var assetData: objects.Asset[] = [
     { id: "arctic", src: "../../Assets/images/background3.png" },
     { id: "sky", src: "../../Assets/images/background4.png" },
     //{ id: "mastercrushed", src: "../../Assets/images/crush.png" },
-    { id: "boss", src: "../../Assets/images/Boss.png" },
+    { id: "boss", src: "../../Assets/images/boss.png" },
+    { id: "bonus", src: "../../Assets/images/bonus.png" },
+    { id: "ruby", src: "../../Assets/images/ruby.png" },
     { id: "endback", src: "../../Assets/images/GameEnd.png" },
     { id: "intro", src: "../../Assets/images/intro.png" },
     { id: "beak", src: "../../Assets/images/beak.png" },
+    { id: "bomb", src: "../../Assets/images/bomb.png" },
+    { id: "enemy", src: "../../Assets/images/enemy.png" },
+    { id: "enemytwo", src: "../../Assets/images/enemytwo.png" },
+    { id: "WinnerBackground", src: "../../Assets/images/Winner.png" },
     
     // Add music
     { id: "backMusic", src: "../../Assets/audio/backmusic.mp3" },
@@ -189,6 +197,13 @@ function changeScene(): void {
             currentScene = intro;
             console.log("Starting INTRO Scene");
             break;
+        case config.Scene.LEVEL1_INTRO:
+            // show the LEVEL1_INTRO scene
+            stage.removeAllChildren();
+            level1_intro = new scenes.Level1_Intro();
+            currentScene = level1_intro;
+            console.log("Starting LEVEL1_INTRO Scene");
+            break;
         case config.Scene.PLAY:
             // show the PLAY scene
             stage.removeAllChildren();
@@ -230,6 +245,13 @@ function changeScene(): void {
             end = new scenes.End();
             currentScene = end;
             console.log("Starting END Scene");
+            break;
+        case config.Scene.WINNER:
+            // show the END scene
+            stage.removeAllChildren();
+            winner = new scenes.Winner();
+            currentScene = winner;
+            console.log("Starting WINNER Scene");
             break;
     }
 

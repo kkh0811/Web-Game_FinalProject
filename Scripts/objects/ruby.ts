@@ -1,9 +1,9 @@
 /*
 ###############################################################################################
-The name of source file : sky.ts
+The name of source file : Ruby.ts
 The information of author :  Giho Kim #300738697 , SiSi Li #300776374 and Liyi Chen #300756123
 Last Modified by: Giho Kim
-Last Modified date: 13 April 2016
+Last Modified date: 15 April 2016
 Program Description: The game is to avoid the enemies using the side scroller. User can
 control the player by a mouse and the enemies will be generated randomly. Some hearts
 also will be generated as bonus. when user get a bonus, which will give a life.
@@ -13,36 +13,38 @@ Revision History: 2.0
 */
 
 module objects {
-    // Sky Class +++++++++++++++++++++++
-    export class Sky extends objects.GameObject {
-        // PRIVATE INSTANCE VARIABLES ++++++++++++++++
+    // Ruby Class +++++++++++++++++++++++
+    export class Ruby extends objects.GameObject {
 
         // COSTRUCTOR METHODS +++++++++++++++++++++
         constructor() {
-            super("sky");
-            this._speed.x = 1.5; //Sky SPEED
-            this._reset(0);
-            this.name = "sky";
+            super("ruby");
+            this._reset(this._rightBounds);
+            this.name = "ruby";
+            this.soundString = "bgmGetheart";
         }
         
-        //  METHODS +++++++++++++++++++++++
+        // PRIVATE METHODS +++++++++++++++++++++++
         public _checkBounds(value:number):void {
-            //console.log(this.x);
             if(this.x <= value)
             {
-                this._reset(0);
+                this._reset(this._rightBounds);
             }
         }
         
-        // reset the sky offscreen
+        // reset the Bonus offscreen
         public _reset(value:number):void {
+            this._speed.x = Math.floor(Math.random()*5) +2;
+            this._speed.y = Math.floor(Math.random()*4) -2;
             this.x = value;
+            this.y = Math.floor(Math.random() * this._bottomBounds + this._topBounds);
         }
         
         public update():void {
-            // scroll the sky 5 px per frame
+            // scroll the Ruby left the screen
             this.x -= this._speed.x;
-            this._checkBounds(-1408);
+            this.y -= this._speed.y;
+            this._checkBounds((-config.Screen.WIDTH)*2);
         }
     }
 }

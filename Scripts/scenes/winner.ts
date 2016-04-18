@@ -13,14 +13,11 @@ Revision History: 1.6
 */
 // LEFT_CAVE SCENE
 module scenes {
-    export class End extends objects.Scene {
+    export class Winner extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
-        private _endLabel: objects.Label;
-        private _highscoreLabel: objects.Label;
         private _exitButton: objects.Button;
         private _restartButton: objects.Button;
         private _backgroundImage: createjs.Bitmap;
-        private _scoreLabel: objects.Label;
         
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -33,31 +30,11 @@ module scenes {
         // Start Method
         public start(): void {
             
-            //Set High Score Value
-            if(scoreValue > highScoreValue){
-                highScoreValue = scoreValue;
-            }
-            
             //Add background
-            this._backgroundImage = new createjs.Bitmap(assets.getResult("endback"));
+            this._backgroundImage = new createjs.Bitmap(assets.getResult("WinnerBackground"));
             this._backgroundImage.x = 0;
             this.addChild(this._backgroundImage);
-            
-            //Add GameOver Label
-            this._endLabel = new objects.Label(
-                "Game Over", "60px Consolas",
-                "#000000",
-                config.Screen.CENTER_X, config.Screen.CENTER_Y+30, true);
-            this.addChild(this._endLabel);
-            
-            //Add Score Label 
-            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FFFFFF", 290, 124, false);
-            this.addChild(this._scoreLabel);
-            
-            //Add HighScore Label 
-            this._highscoreLabel = new objects.Label("High Score:", "40px Candara Bold Italic", "#FF4A4A", 190, 204, false);
-            this.addChild(this._highscoreLabel);
-            
+                 
             // add the RestartButton to the OVER scene
             this._restartButton = new objects.Button(
                 "RestartButton",
@@ -83,12 +60,6 @@ module scenes {
             stage.addChild(this);
         }
 
-        // PLAY Scene updates here
-        public update(): void {
-            this._scoreLabel.text = "" + Math.round(scoreValue);
-            this._highscoreLabel.text = "High Score : " + Math.round(highScoreValue);
-        }
-        
         
         //EVENT HANDLERS ++++++++++++++++++++
         

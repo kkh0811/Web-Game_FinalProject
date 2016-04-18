@@ -19,9 +19,11 @@ module scenes {
         private _forest: objects.Forest;
         private _enemies: objects.Enemy[];
         private _bonus: objects.Bonus;
+        private _bonusImage: createjs.Bitmap;
+        private _ruby:objects.Ruby;
+        private _rubyImage: createjs.Bitmap;
         private _enemyCount: number;
         private _player: objects.Player;
-
         private _collision: managers.Collision;
         private _scoreLabel: objects.Label;
         private _livesLabel: objects.Label;
@@ -54,7 +56,7 @@ module scenes {
             createjs.Sound.volume = 20;
             
             //Set Enemy Count
-            this._enemyCount = 7;
+            this._enemyCount = 4;
             
             //Instantiate Enemy array 
             this._enemies = new Array<objects.Enemy>();
@@ -85,14 +87,27 @@ module scenes {
             this._bonus = new objects.Bonus();
             this.addChild(this._bonus);
             
-
+            // added ruby to the scene
+            this._ruby = new objects.Ruby();
+            this.addChild(this._ruby);
             
             // added lives and score labels to the scene
-            this._livesLabel = new objects.Label("Lives:", "40px Candara Bold Italic", "#FF0000", 20, 0, false);
+            this._livesLabel = new objects.Label("Lives:", "40px Candara Bold Italic", "#FF0000", 80, 0, false);
             this.addChild(this._livesLabel);
-            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FF0000", 425, 0, false);
+            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FF0000", 445, 0, false);
             this.addChild(this._scoreLabel);
-           
+            
+            // Added Bonus image
+            this._bonusImage = new createjs.Bitmap(assets.getResult("bonus"));
+            this._bonusImage.x = 25;
+            this._bonusImage.y = 5;
+            this.addChild(this._bonusImage);
+            
+            // Added Ruby image
+            this._rubyImage = new createjs.Bitmap(assets.getResult("ruby"));
+            this._rubyImage.x = 400;
+            this._rubyImage.y = 5;
+            this.addChild(this._rubyImage);
            
            
             // add this scene to the global stage container
@@ -105,15 +120,15 @@ module scenes {
             
             this._forest.update();
             this._bonus.update();
+            this._ruby.update();
             this._player.update(controls);
             this._enemies.forEach(enemy => {
                 enemy.update();
                 this._collision.check(enemy);
-                scoreValue += 0.1;
+                //scoreValue += 0.1;
             });
-            
-            
             this._collision.check(this._bonus);
+            this._collision.check(this._ruby);
             this._updateScore();
             if (scoreValue >= 500) {
                 //Change to Level2 

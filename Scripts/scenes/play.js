@@ -44,7 +44,7 @@ var scenes;
             createjs.Sound.play("backMusic").loop = -1;
             createjs.Sound.volume = 20;
             //Set Enemy Count
-            this._enemyCount = 7;
+            this._enemyCount = 4;
             //Instantiate Enemy array 
             this._enemies = new Array();
             // added forest to the scene
@@ -65,11 +65,24 @@ var scenes;
             // added bonus to the scene
             this._bonus = new objects.Bonus();
             this.addChild(this._bonus);
+            // added ruby to the scene
+            this._ruby = new objects.Ruby();
+            this.addChild(this._ruby);
             // added lives and score labels to the scene
-            this._livesLabel = new objects.Label("Lives:", "40px Candara Bold Italic", "#FF0000", 20, 0, false);
+            this._livesLabel = new objects.Label("Lives:", "40px Candara Bold Italic", "#FF0000", 80, 0, false);
             this.addChild(this._livesLabel);
-            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FF0000", 425, 0, false);
+            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FF0000", 445, 0, false);
             this.addChild(this._scoreLabel);
+            // Added Bonus image
+            this._bonusImage = new createjs.Bitmap(assets.getResult("bonus"));
+            this._bonusImage.x = 25;
+            this._bonusImage.y = 5;
+            this.addChild(this._bonusImage);
+            // Added Ruby image
+            this._rubyImage = new createjs.Bitmap(assets.getResult("ruby"));
+            this._rubyImage.x = 400;
+            this._rubyImage.y = 5;
+            this.addChild(this._rubyImage);
             // add this scene to the global stage container
             stage.addChild(this);
         };
@@ -78,13 +91,15 @@ var scenes;
             var _this = this;
             this._forest.update();
             this._bonus.update();
+            this._ruby.update();
             this._player.update(controls);
             this._enemies.forEach(function (enemy) {
                 enemy.update();
                 _this._collision.check(enemy);
-                scoreValue += 0.1;
+                //scoreValue += 0.1;
             });
             this._collision.check(this._bonus);
+            this._collision.check(this._ruby);
             this._updateScore();
             if (scoreValue >= 500) {
                 //Change to Level2 

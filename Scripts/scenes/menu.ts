@@ -83,7 +83,7 @@ module scenes {
             // Add click sound
             createjs.Sound.play("bgmchicken");
             // Switch to the Play Scene
-            scene = config.Scene.LEVEL3_PLAY;
+            scene = config.Scene.PLAY;
             changeScene();
         }
         
