@@ -52,7 +52,7 @@ module scenes {
             
             //Add CONTENTs Label
             this._contentLabel = new objects.Label(
-                "Get 1500 Scores to Win! ", "30px Consolas",
+                "Avoid the attack from Boss! \n\nGet 1500 Scores to Win! ", "30px Consolas",
                 "#FFFFFF",
                 config.Screen.CENTER_X, config.Screen.CENTER_Y - 90, true);
             this.addChild(this._contentLabel);

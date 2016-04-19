@@ -40,7 +40,7 @@ var scenes;
             this._newEnemy.y = 190;
             this.addChild(this._newEnemy);
             //Add CONTENTs Label
-            this._contentLabel = new objects.Label("Get 1500 Scores to Win! ", "30px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y - 90, true);
+            this._contentLabel = new objects.Label("Avoid the attack from Boss! \n\nGet 1500 Scores to Win! ", "30px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y - 90, true);
             this.addChild(this._contentLabel);
             // add the Start button to the Level2_Play scene
             this._startButton = new objects.Button("StartButton", config.Screen.CENTER_X - 10, config.Screen.CENTER_Y + 175, true);

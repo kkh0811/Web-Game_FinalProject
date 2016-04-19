@@ -130,7 +130,7 @@ module scenes {
             // added lives and score labels to the scene
             this._livesLabel = new objects.Label("Lives:", "40px Candara Bold Italic", "#FF0000", 80, 0, false);
             this.addChild(this._livesLabel);
-            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FF0000", 445, 0, false);
+            this._scoreLabel = new objects.Label("Score:", "40px Candara Bold Italic", "#FF0000", 425, 0, false);
             this.addChild(this._scoreLabel);
             
             // Added Bonus image
@@ -141,7 +141,7 @@ module scenes {
             
             // Added Ruby image
             this._rubyImage = new createjs.Bitmap(assets.getResult("ruby"));
-            this._rubyImage.x = 400;
+            this._rubyImage.x = 380;
             this._rubyImage.y = 5;
             this.addChild(this._rubyImage);         
            

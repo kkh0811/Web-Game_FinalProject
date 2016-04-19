@@ -58,7 +58,7 @@ var scenes;
             // Add click sound
             createjs.Sound.play("bgmchicken");
             // Switch to the Play Scene
-            scene = config.Scene.PLAY;
+            scene = config.Scene.LEVEL1_INTRO;
             changeScene();
         };
         // InstructionButton click event handler
