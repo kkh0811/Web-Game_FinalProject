@@ -19,6 +19,11 @@ module scenes {
         private _playButton: objects.Button;
         private _instructionButton: objects.Button;
         private _exitButton: objects.Button;
+        
+        private _level1Button: objects.Button;
+        private _level2Button: objects.Button;
+        private _level3Button: objects.Button;
+        
         private _backgroundImage: createjs.Bitmap;
         
         // CONSTRUCTOR ++++++++++++++++++++++
@@ -65,6 +70,36 @@ module scenes {
             // Exit Button event listener
             this._exitButton.on("click", this._exitButtonClick, this);
             
+            // add the Level1 button to the MENU scene
+            this._level1Button = new objects.Button(
+                "Level1Button",
+                config.Screen.CENTER_X - 215,
+                config.Screen.CENTER_Y + 170, true);
+            this.addChild(this._level1Button);
+            
+            // Level1 Button event listener
+            this._level1Button.on("click", this._level1ButtonClick, this);
+            
+            // add the Level2 Button to the MENU scene
+            this._level2Button = new objects.Button(
+                "Level2Button",
+                config.Screen.CENTER_X - 15,
+                config.Screen.CENTER_Y  + 170, true);
+            this.addChild(this._level2Button);
+            
+            // Level2 Button event listener
+            this._level2Button.on("click", this._leve2ButtonClick, this);
+            
+            // add the Level3 Button to the MENU scene
+            this._level3Button = new objects.Button(
+                "Level3Button",
+                config.Screen.CENTER_X + 180,
+                config.Screen.CENTER_Y + 170, true);
+            this.addChild(this._level3Button);
+            
+            // Level3 Button event listener
+            this._level3Button.on("click", this._level3ButtonClick, this);
+            
             
             // add this scene to the global stage container
             stage.addChild(this);
@@ -93,6 +128,31 @@ module scenes {
             createjs.Sound.play("bgmchicken");
             // Switch to the INTRO Scene
             scene = config.Scene.INTRO;
+            changeScene();
+        }
+        
+        // InstructionButton click event handler
+        private _level1ButtonClick(event: createjs.MouseEvent) {
+            // Add click sound
+            createjs.Sound.play("bgmchicken");
+            // Switch to the INTRO Scene
+            scene = config.Scene.PLAY;
+            changeScene();
+        }
+        
+        private _leve2ButtonClick(event: createjs.MouseEvent) {
+            // Add click sound
+            createjs.Sound.play("bgmchicken");
+            // Switch to the INTRO Scene
+            scene = config.Scene.LEVEL2_PLAY;
+            changeScene();
+        }
+        
+        private _level3ButtonClick(event: createjs.MouseEvent) {
+            // Add click sound
+            createjs.Sound.play("bgmchicken");
+            // Switch to the INTRO Scene
+            scene = config.Scene.LEVEL3_PLAY;
             changeScene();
         }
         

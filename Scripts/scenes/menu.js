@@ -46,6 +46,21 @@ var scenes;
             this.addChild(this._exitButton);
             // Exit Button event listener
             this._exitButton.on("click", this._exitButtonClick, this);
+            // add the Level1 button to the MENU scene
+            this._level1Button = new objects.Button("Level1Button", config.Screen.CENTER_X - 215, config.Screen.CENTER_Y + 170, true);
+            this.addChild(this._level1Button);
+            // Level1 Button event listener
+            this._level1Button.on("click", this._level1ButtonClick, this);
+            // add the Level2 Button to the MENU scene
+            this._level2Button = new objects.Button("Level2Button", config.Screen.CENTER_X - 15, config.Screen.CENTER_Y + 170, true);
+            this.addChild(this._level2Button);
+            // Level2 Button event listener
+            this._level2Button.on("click", this._leve2ButtonClick, this);
+            // add the Level3 Button to the MENU scene
+            this._level3Button = new objects.Button("Level3Button", config.Screen.CENTER_X + 180, config.Screen.CENTER_Y + 170, true);
+            this.addChild(this._level3Button);
+            // Level3 Button event listener
+            this._level3Button.on("click", this._level3ButtonClick, this);
             // add this scene to the global stage container
             stage.addChild(this);
         };
@@ -67,6 +82,28 @@ var scenes;
             createjs.Sound.play("bgmchicken");
             // Switch to the INTRO Scene
             scene = config.Scene.INTRO;
+            changeScene();
+        };
+        // InstructionButton click event handler
+        Menu.prototype._level1ButtonClick = function (event) {
+            // Add click sound
+            createjs.Sound.play("bgmchicken");
+            // Switch to the INTRO Scene
+            scene = config.Scene.PLAY;
+            changeScene();
+        };
+        Menu.prototype._leve2ButtonClick = function (event) {
+            // Add click sound
+            createjs.Sound.play("bgmchicken");
+            // Switch to the INTRO Scene
+            scene = config.Scene.LEVEL2_PLAY;
+            changeScene();
+        };
+        Menu.prototype._level3ButtonClick = function (event) {
+            // Add click sound
+            createjs.Sound.play("bgmchicken");
+            // Switch to the INTRO Scene
+            scene = config.Scene.LEVEL3_PLAY;
             changeScene();
         };
         // ExitButton click event handler

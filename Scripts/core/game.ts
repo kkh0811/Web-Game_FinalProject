@@ -72,12 +72,16 @@ var atlas = {
         "enemytwo": [0],
         "enemy": [1],
         "ExitButton": [2],
+        
         "InstructionButton": [3],
         "PlayButton": [4],
         "RestartButton": [5],
         "StartButton": [6],
+        
         "master3": [7],
+        
         "BackButton": [8],
+        
         "master4": [9],
         "master1": [10],
         "master2": [11],
@@ -107,6 +111,17 @@ var assetData: objects.Asset[] = [
     { id: "enemy", src: "../../Assets/images/enemy.png" },
     { id: "enemytwo", src: "../../Assets/images/enemytwo.png" },
     { id: "WinnerBackground", src: "../../Assets/images/Winner.png" },
+    
+    { id: "InstructionButton", src: "../../Assets/images/InstructionButton.png" },
+    { id: "PlayButton", src: "../../Assets/images/PlayButton.png" },
+    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
+    { id: "ExitButton", src: "../../Assets/images/ExitButton.png" },
+    { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    
+    { id: "Level1Button", src: "../../Assets/images/Level1Button.png" },
+    { id: "Level2Button", src: "../../Assets/images/Level2Button.png" },
+    { id: "Level3Button", src: "../../Assets/images/Level3Button.png" },
     
     // Add music
     { id: "backMusic", src: "../../Assets/audio/backmusic.mp3" },
